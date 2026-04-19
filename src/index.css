@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Nunito', sans-serif;
+}
+
+* {
+  font-family: var(--font-sans);
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slide { animation: slideIn 0.3s ease-out; }
+
+.ticket-print {
+  font-family: 'Courier New', monospace;
+}
+
+@media print {
+  @page { margin: 0; size: 80mm auto; }
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  body * { visibility: hidden; }
+  .ticket-print, .ticket-print * { visibility: visible; }
+  .ticket-print {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 5mm !important;
+    box-sizing: border-box !important;
+    border: none !important;
+  }
+  .no-print { display: none !important; }
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.product-card:hover { transform: translateY(-2px); }
+.btn-action:active  { transform: scale(0.95); }
